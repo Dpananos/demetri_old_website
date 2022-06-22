@@ -1,0 +1,11 @@
+---
+title: "Welcome To My Quarto Blog"
+author: "Demetri Pananos"
+date: "2022-06-19"
+categories: [News]
+image: "thumbnail.jpg"
+---
+
+
+I've moved my blog to Quarto!  It will take some time to migrate my old posts here so please be patient.
+

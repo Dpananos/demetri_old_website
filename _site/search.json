@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Quarto Blog",
+    "section": "",
+    "text": "I’ve moved my blog to Quarto! It will take some time to migrate my old posts here so please be patient."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "A Blog About Statistics, Mathematics, and Other Stuff",
+    "section": "",
+    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJun 22, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nNews\n\n\n\n\n\n\n\n\n\n\n\nJun 19, 2022\n\n\nDemetri Pananos\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPython\n\n\nRiddler\n\n\n\n\n\n\n\n\n\n\n\nDec 29, 2017\n\n\nDemetri Pananos\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "PhDemetri",
+    "section": "",
+    "text": "I’m a Senior Data Scientist at Zapier focusing on improving A/B Tests and experimentation."
+  },
+  {
+    "objectID": "posts/2017-12-29-coins/index.html",
+    "href": "posts/2017-12-29-coins/index.html",
+    "title": "Coins and Factors",
+    "section": "",
+    "text": "I love Fivethirtyeight’s Riddler column. Usually, I can solve the problem with computation, but on some rare occasions I can do some interesting math to get the solution without having to code. Here is the first puzzle I ever solved. It is a simple puzzle, yet it has an elegant computational and analytic solution. Let’s take a look.\nThe puzzle says:"
+  },
+  {
+    "objectID": "posts/2017-12-29-coins/index.html#computing-the-solution",
+    "href": "posts/2017-12-29-coins/index.html#computing-the-solution",
+    "title": "Coins and Factors",
+    "section": "Computing the Solution",
+    "text": "Computing the Solution\nThis is really easy to program. Here is a little python script to compute the solution:\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom itertools import product\n\n\n# Array of 100 True.  True is Heads up\nNcoins = 100\ncoins = np.ones(Ncoins,dtype = bool)\nindex = np.arange(1,Ncoins+1)\n\n#Go through the coins\nfor N in range(1,Ncoins+1):\n    \n    coins[index%N==0] = ~coins[index%N==0]  #Flip the coin.  \nShown below is the solution. In dark blue are the coins face down (I’ve arranged them in a 10 by 10 grid and annotated them with their position for clarity). When we take a look at the coins variable, we see that those coins in positions which are perfect squares pop out. That is an interesting result, but what is more interesting is reasoning out the solution without doing any computation at all!"
+  },
+  {
+    "objectID": "posts/2017-12-29-coins/index.html#reasoning-out-the-solution.",
+    "href": "posts/2017-12-29-coins/index.html#reasoning-out-the-solution.",
+    "title": "Coins and Factors",
+    "section": "Reasoning Out the Solution.",
+    "text": "Reasoning Out the Solution.\nFirst, let’s think why a coin would end up face down. If all coins start heads up, then it would take an odd number of flips for the coin to end up face down. Since coins are only flipped when we pass a factor of a coin’s position, then those coins in positions with an odd number of factors will be heads down at the end.\nSo 9 would end up heads down because it has factors 1 (flip face down), 3 (flip face up), and 9 (flip face down), while 6 would be heads up because it has factors 1, 2, 3, and 6.\nSo which numbers have an odd number of factors? Here is where we get to do some interesting math. The Fundamental Theorem of Arithmetic says that every integer \\(N>1\\) is either prime or can be uniquely factored as a product of primes\n\\[N = \\prod_{j} p_j^{a_j} \\>.\\]\nIf \\(N\\) can be factored like this, that means it has\n\\[\\prod_{j} (a_j +1)\\]\nunique factors.\nIt is straight forward to argue that a composite odd number must be the product of odd numbers, so we know that the \\(a_j+1\\) must be odd \\(\\forall j\\), and so that means the \\(a_j\\) are even and can be written as \\(a_j = 2n_j\\). Thus, our factorization becomes\n\\[N = \\prod_j p_j^{2n_j} = \\prod_j (p_j^{n_j})^2 = \\left(\\prod_j p_j^{n_j} \\right)^2 \\>,\\]\nwhich means that if \\(N\\) has an odd number of factors, it must be a perfect square! All done.\nI love trying to solve the Riddler’s puzzle without coding. It makes me draw upon knowledge I haven’t used in a while, and may force me to learn something new."
+  }
+]

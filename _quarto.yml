@@ -2,18 +2,20 @@ project:
   type: website
 
 website:
-  title: "dpananos.github.io"
+  title: "PhDemetri"
   navbar:
-    left:
-      - href: index.qmd
-        text: Home
+    right:
       - about.qmd
-
+      - icon: github
+        href: https://github.com/Dpananos
+      - icon: twitter
+        href: https://twitter.com/PhDemetri
+      - icon: linkedin
+        href: https://www.linkedin.com/in/demetripananos/
 format:
   html:
-    theme: cosmo
+    theme: flatly
     css: styles.css
-    toc: true
 
 
 

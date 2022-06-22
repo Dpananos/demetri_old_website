@@ -1,5 +1,19 @@
 ---
-title: "About"
+title: "PhDemetri"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/PhDemetri
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/demetripananos/
+    - icon: github
+      text: Github
+      href: https://github.com/Dpananos
+
 ---
 
-About this site
+I'm a Senior Data Scientist at Zapier focusing on improving A/B Tests and experimentation.
