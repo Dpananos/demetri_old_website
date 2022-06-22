@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.596">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Demetri Pananos">
+<meta name="dcterms.date" content="2022-05-07">
+
+<title>PhDemetri - Flippin’ Fun!</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">PhDemetri</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">PhDemetri</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Dpananos"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/PhDemetri"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/demetripananos/"><i class="bi bi-linkedin" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Flippin’ Fun!</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Bayes</div>
+                <div class="quarto-category">Stan</div>
+                <div class="quarto-category">Python</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Demetri Pananos </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 7, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>I wrote an <a href="https://stats.stackexchange.com/a/574359/111259">answer</a> to a question about sequences of coin flips a couple days back that I was quite chuffed with. In short, the question asked for statistical ways to determine if a sequence of coin flips was from an unbiased coin or a human trying to appear random. The resulting model turned into a fun game <a href="https://twitter.com/PhDemetri/status/1523034006626856960">on twitter</a> centered around determining if people who follow me could simulate a sequence of coin flips that looked random (without using a real RNG, or some funny workaround. I have a lot of faith in my twitter followers…maybe too much).</p>
+<p>Anyway, then I thought “I should fit a hierarchical model to this data”. So that’s what I’m doing</p>
+<section id="initial-model" class="level2">
+<h2 class="anchored" data-anchor-id="initial-model">Initial Model</h2>
+<p>To understand the hierarchical model, we first need to understand the model I initially built. Let me give you a quick rundown on that.</p>
+<p>Let <span class="math inline">\(S\)</span> be a sequence of bernoulli experiments so that <span class="math inline">\(S_i\)</span> is either 1 or a 0 (a heads or a tails if you wish). The question I answered concerns detecting if a given sequence <span class="math inline">\(S\)</span> could have been created by a human (or by a non-random process posing as random). I interpreted that as a call to estimate the lag-1 autocorrelation of the flips. The hypothesis being that humans probably perceive long streaks of one outcome or the other as signs of non-randomness and will intentionally switch the outcome if they feel the run is too long. I initially chose a Bayesian approach because I’m a glutton for punishment and someone else already gave a pretty good answer.</p>
+<p>The model is quite straight forward to write down. Let <span class="math inline">\(\rho\)</span> be the correlation between <span class="math inline">\(S_i\)</span> and <span class="math inline">\(S_{i+1}\)</span>, and let <span class="math inline">\(q\)</span> be the expected number of heads in the sequence. We can write down the conditional probabilities that we see a 0/1 given the last element in the sequence was a 1/0. Those conditional probabilities are derived <a href="https://stats.stackexchange.com/questions/533217/interpretation-of-the-autocorrelation-of-a-binary-process">here</a> and they are…</p>
+<p><span class="math display">\[ P(1 \vert 1) = q + \rho(1-q) \]</span></p>
+<p><span class="math display">\[ P(1 \vert 0) = q(1-\rho) \]</span></p>
+<p><span class="math display">\[ P(0 \vert 1) = (1-q)(1-\rho) \]</span></p>
+<p><span class="math display">\[ P(0 \vert 0) = 1 - q + \rho \cdot q \]</span></p>
+<p>The trick is to then count the subsequences of (1, 1), (1, 0), (0, 1), and (0, 0). Let <span class="math inline">\(p_{i\vert j} = P(i \vert j)\)</span>. We can then consider the count of each subsequence as multinomial</p>
+<p><span class="math display">\[ y \sim \mbox{Multinomial}(\theta) \&gt;. \]</span></p>
+<p>Here, <span class="math inline">\(\theta\)</span> is the multinomial parameter, wherein each element is <span class="math inline">\(\theta = [p_{1 \vert 1}, p_{1\vert 0}, p_{0 \vert 1}, p_{0\vert 0}]\)</span>. Equip this with a uniform prior on both <span class="math inline">\(\rho\)</span> and <span class="math inline">\(q\)</span> and you’ve got yourself a model.</p>
+</section>
+<section id="the-stan-code" class="level2">
+<h2 class="anchored" data-anchor-id="the-stan-code">The Stan Code</h2>
+<p>The Stan code for this model is quite easy to understand. The <code>data</code> block will consist of the counts of each type of subsequence. We can then concatenate those counts into an <code>int</code> of length 4 via the <code>transformed data</code> block. The concatenated counts will be what we pass to the multinomial likelihood.</p>
+<pre><code>data{
+  int y_1_1; //number of concurrent 1s
+  int y_0_1; //number of 0,1 occurences
+  int y_1_0; //number of 1,0 occurences
+  int y_0_0; //number of concurrent 0s
+}
+transformed data{
+    int y[4] = {y_1_1, y_0_1, y_1_0, y_0_0};
+}</code></pre>
+<p>The only parameters we are interested in estimating are the autocorrelation <code>rho</code> and the coin’s bias <code>q</code>.</p>
+<pre><code>parameters{
+  real&lt;lower=-1, upper=1&gt; rho;
+  real&lt;lower=0, upper=1&gt; q;
+}</code></pre>
+<p>We can derive the probabilities we need via the equations above, and that is a job for the transformed parameters block. We can then concatenate the conditional probabilities into a <code>simplex</code> data type object, <code>theta</code> to pass to the multinomial likelihood. Be careful though, we need to multiply <code>theta</code> by 0.5 since we are working with conditional probabilities. Note <span class="math inline">\(p_{1\vert 1} + p_{0 \vert 1 } + p_{1\vert 0} + p_{0 \vert 0 } = 2\)</span>, hence the scaling factor.</p>
+<pre><code>transformed parameters{
+  real&lt;lower=0, upper=1&gt; prob_1_1 = q + rho*(1-q);
+  real&lt;lower=0, upper=1&gt; prob_0_1 = (1-q)*(1-rho);
+  real&lt;lower=0, upper=1&gt; prob_1_0 = q*(1-rho);
+  real&lt;lower=0, upper=1&gt; prob_0_0 = 1 - q + rho*q;
+  simplex[4] theta = 0.5*[prob_1_1, prob_0_1, prob_1_0, prob_0_0 ]';
+}</code></pre>
+<p>The model call is then quite simple</p>
+<pre><code>model{
+  q ~ beta(1, 1);
+  rho ~ uniform(-1, 1);
+  y ~ multinomial(theta); 
+}</code></pre>
+<p>and we can even generate new sequences based off the estimated parameters as a sort of posterior predictive check.</p>
+<pre><code>generated quantities{
+    vector[300] yppc;
+    
+    yppc[1] = bernoulli_rng(q);
+    
+    for(i in 2:300){
+        if(yppc[i-1]==1){
+            yppc[i] = bernoulli_rng(prob_1_1);
+        }
+        else{
+        yppc[i] = bernoulli_rng(prob_1_0);
+        }
+    }
+}</code></pre>
+<p>All in all the model is</p>
+<pre><code>data{
+
+  int y_1_1; //number of concurrent 1s
+  int y_0_1; //number of 0,1 occurences
+  int y_1_0; //number of 1,0 occurences
+  int y_0_0; //number of concurrent 0s
+  
+}
+transformed data{
+    int y[4] = {y_1_1, y_0_1, y_1_0, y_0_0};
+}
+parameters{
+  real&lt;lower=-1, upper=1&gt; rho;
+  real&lt;lower=0, upper=1&gt; q;
+}
+transformed parameters{
+  real&lt;lower=0, upper=1&gt; prob_1_1 = q + rho*(1-q);
+  real&lt;lower=0, upper=1&gt; prob_0_1 = (1-q)*(1-rho);
+  real&lt;lower=0, upper=1&gt; prob_1_0 = q*(1-rho);
+  real&lt;lower=0, upper=1&gt; prob_0_0 = 1 - q + rho*q;
+  simplex[4] theta = 0.5*[prob_1_1, prob_0_1, prob_1_0, prob_0_0 ]';
+}
+model{
+  q ~ beta(1, 1);
+  rho ~ uniform(-1, 1);
+  y ~ multinomial(theta);
+  
+}
+generated quantities{
+    vector[300] yppc;
+    
+    yppc[1] = bernoulli_rng(q);
+    
+    for(i in 2:300){
+        if(yppc[i-1]==1){
+            yppc[i] = bernoulli_rng(prob_1_1);
+        }
+        else{
+        yppc[i] = bernoulli_rng(prob_1_0);
+        }
+    }
+}</code></pre>
+</section>
+<section id="run-from-python" class="level2">
+<h2 class="anchored" data-anchor-id="run-from-python">Run From Python</h2>
+<p>With the model written down, all we need to do is add some python code to create the counts of each subsequence and then run the stan model. Here is teh python code I used to create the response tweets for that game I ran on twitter.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cmdstanpy</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>y_1_1 <span class="op">=</span> <span class="dv">0</span> <span class="co"># count of (1, 1)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y_0_0 <span class="op">=</span> <span class="dv">0</span> <span class="co"># count of (0, 0)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>y_0_1 <span class="op">=</span> <span class="dv">0</span> <span class="co"># count of (0, 1)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>y_1_0 <span class="op">=</span> <span class="dv">0</span> <span class="co"># count of (1, 0)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>sequence <span class="op">=</span> <span class="bu">list</span>(<span class="st">'TTHHTHTTHTTTHTTTHTTTHTTHTHHTHHTHTHHTTTHHTHTHTTHTHHTTHTHHTHTTTHHTTHHTTHHHTHHTHTTHTHTTHHTHHHTTHTHTTTHHTTHTHTHTHTHTTHTHTHHHTTHTHTHHTHHHTHTHTTHTTHHTHTHTHTTHHTTHTHTTHHHTHTHTHTTHTTHHTTHTHHTHHHTTHHTHTTHTHTHTHTHTHTHHHTHTHTHTHHTHHTHTHTTHTTTHHTHTTTHTHHTHHHHTTTHHTHTHTHTHHHTTHHTHTTTHTHHTHTHTHHTHTTHTTHTHHTHTHTTT'</span>.upper())</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Do a rolling window trick I saw somewhere on twitter.</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># This implements a rollowing window of 2</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># In python 3.10, this would be a great use case for match</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pairs <span class="kw">in</span> <span class="bu">zip</span>(sequence[:<span class="op">-</span><span class="dv">1</span>], sequence[<span class="dv">1</span>:]):</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pairs <span class="op">==</span> (<span class="st">'H'</span>,<span class="st">'H'</span>):</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        y_1_1 <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> pairs <span class="op">==</span> (<span class="st">'T'</span>,<span class="st">'H'</span>):</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        y_0_1 <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> pairs <span class="op">==</span> (<span class="st">'H'</span>, <span class="st">'T'</span>):</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        y_1_0 <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        y_0_0 <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Write the stan model as a string.  We will then write it to a file</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>stan_code <span class="op">=</span> <span class="st">'''</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="st">data{</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="st">  int y_1_1; //number of concurrent 1s</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="st">  int y_0_1; //number of 0,1 occurences</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="st">  int y_1_0; //number of 1,0 occurences</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="st">  int y_0_0; //number of concurrent 0s</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="st">transformed data{</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="st">    int y[4] = {y_1_1, y_0_1, y_1_0, y_0_0};</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="st">parameters{</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=-1, upper=1&gt; rho;</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0, upper=1&gt; q;</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="st">transformed parameters{</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0, upper=1&gt; prob_1_1 = q + rho*(1-q);</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0, upper=1&gt; prob_0_1 = (1-q)*(1-rho);</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0, upper=1&gt; prob_1_0 = q*(1-rho);</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="st">  real&lt;lower=0, upper=1&gt; prob_0_0 = 1 - q + rho*q;</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="st">  simplex[4] theta = 0.5*[prob_1_1, prob_0_1, prob_1_0, prob_0_0 ]';</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="st">model{</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="st">  q ~ beta(1, 1);</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="st">  rho ~ uniform(-1, 1);</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="st">  y ~ multinomial(theta);</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="st">generated quantities{</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="st">    vector[300] yppc;</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="st">    yppc[1] = bernoulli_rng(q);</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="st">    for(i in 2:300){</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="st">        if(yppc[i-1]==1){</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="st">            yppc[i] = bernoulli_rng(prob_1_1);</span></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="st">        else{</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="st">        yppc[i] = bernoulli_rng(prob_1_0);</span></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="st">'''</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Write the model to a temp file</span></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'model_file.stan'</span>, <span class="st">'w'</span>) <span class="im">as</span> model_file:</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    model_file.write(stan_code)</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Compile the model</span></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> cmdstanpy.CmdStanModel(stan_file<span class="op">=</span><span class="st">'model_file.stan'</span>)</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="co"># data to pass to Stan</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="bu">dict</span>(y_1_1 <span class="op">=</span> y_1_1, y_0_0 <span class="op">=</span> y_0_0, y_0_1 <span class="op">=</span> y_0_1, y_1_0 <span class="op">=</span> y_1_0)</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting stuff.</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(dpi <span class="op">=</span> <span class="dv">120</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize <span class="op">=</span> (<span class="dv">15</span>, <span class="dv">5</span>))</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Auto-correlation'</span>)</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Bias'</span>)</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlim(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axvline(<span class="dv">0</span>, color <span class="op">=</span> <span class="st">'red'</span>)</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axvline(<span class="fl">0.5</span>, color <span class="op">=</span> <span class="st">'red'</span>)</span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].annotate(<span class="st">'Uncorrelated Flips'</span>, xy<span class="op">=</span>(<span class="fl">0.475</span>, <span class="fl">0.5</span>), xycoords<span class="op">=</span><span class="st">'axes fraction'</span>, rotation <span class="op">=</span> <span class="dv">90</span>)</span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].annotate(<span class="st">'Unbiased Flips'</span>, xy<span class="op">=</span>(<span class="fl">0.475</span>, <span class="fl">0.5</span>), xycoords<span class="op">=</span><span class="st">'axes fraction'</span>, rotation <span class="op">=</span> <span class="dv">90</span>)</span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="co"># MCMC go brrrr</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>fit <span class="op">=</span> model.sample(data)</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(fit.stan_variable(<span class="st">'rho'</span>), edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(fit.stan_variable(<span class="st">'q'</span>), edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>autocorr <span class="op">=</span> fit.stan_variable(<span class="st">'rho'</span>).mean()</span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> fit.stan_variable(<span class="st">'q'</span>).mean()</span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>tweet <span class="op">=</span> <span class="ss">f"Your flips have an expected correlation of </span><span class="sc">{</span>autocorr<span class="sc">:.2f}</span><span class="ss"> and your coin's bias is about </span><span class="sc">{</span>bias<span class="sc">:.2f}</span><span class="ss">"</span></span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Your sequence was </span><span class="sc">{</span><span class="st">''</span><span class="sc">.</span>join(sequence)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tweet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>INFO:cmdstanpy:compiling stan file /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file.stan to exe file /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>INFO:cmdstanpy:compiled model executable: /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>WARNING:cmdstanpy:Stan compiler has produced 1 warnings:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>WARNING:cmdstanpy:
+--- Translating Stan model to C++ code ---
+bin/stanc  --o=/Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file.hpp /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file.stan
+Warning in '/Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file.stan', line 11, column 4: Declaration
+    of arrays by placing brackets after a variable name is deprecated and
+    will be removed in Stan 2.32.0. Instead use the array keyword before the
+    type. This can be changed automatically using the auto-format flag to
+    stanc
+
+--- Compiling, linking C++ code ---
+clang++ -std=c++1y -Wno-unknown-warning-option -Wno-tautological-compare -Wno-sign-compare -D_REENTRANT -Wno-ignored-attributes      -I stan/lib/stan_math/lib/tbb_2020.3/include    -O3 -I src -I stan/src -I lib/rapidjson_1.1.0/ -I lib/CLI11-1.9.1/ -I stan/lib/stan_math/ -I stan/lib/stan_math/lib/eigen_3.3.9 -I stan/lib/stan_math/lib/boost_1.75.0 -I stan/lib/stan_math/lib/sundials_6.0.0/include -I stan/lib/stan_math/lib/sundials_6.0.0/src/sundials    -DBOOST_DISABLE_ASSERTS          -c -include-pch stan/src/stan/model/model_header.hpp.gch -x c++ -o /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file.o /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file.hpp
+clang++ -std=c++1y -Wno-unknown-warning-option -Wno-tautological-compare -Wno-sign-compare -D_REENTRANT -Wno-ignored-attributes      -I stan/lib/stan_math/lib/tbb_2020.3/include    -O3 -I src -I stan/src -I lib/rapidjson_1.1.0/ -I lib/CLI11-1.9.1/ -I stan/lib/stan_math/ -I stan/lib/stan_math/lib/eigen_3.3.9 -I stan/lib/stan_math/lib/boost_1.75.0 -I stan/lib/stan_math/lib/sundials_6.0.0/include -I stan/lib/stan_math/lib/sundials_6.0.0/src/sundials    -DBOOST_DISABLE_ASSERTS                -Wl,-L,"/Users/demetri/.cmdstan/cmdstan-2.29.2/stan/lib/stan_math/lib/tbb" -Wl,-rpath,"/Users/demetri/.cmdstan/cmdstan-2.29.2/stan/lib/stan_math/lib/tbb"      /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file.o src/cmdstan/main.o        -Wl,-L,"/Users/demetri/.cmdstan/cmdstan-2.29.2/stan/lib/stan_math/lib/tbb" -Wl,-rpath,"/Users/demetri/.cmdstan/cmdstan-2.29.2/stan/lib/stan_math/lib/tbb"   stan/lib/stan_math/lib/sundials_6.0.0/lib/libsundials_nvecserial.a stan/lib/stan_math/lib/sundials_6.0.0/lib/libsundials_cvodes.a stan/lib/stan_math/lib/sundials_6.0.0/lib/libsundials_idas.a stan/lib/stan_math/lib/sundials_6.0.0/lib/libsundials_kinsol.a  stan/lib/stan_math/lib/tbb/libtbb.dylib stan/lib/stan_math/lib/tbb/libtbbmalloc.dylib stan/lib/stan_math/lib/tbb/libtbbmalloc_proxy.dylib -o /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file
+rm -f /Users/demetri/Documents/dpananos.github.io/posts/2022-05-07-flippin/model_file.o
+</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>INFO:cmdstanpy:CmdStan start processing</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"8b4197ff587543abbeaee330aeba92ed","version_major":2,"version_minor":0}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"97e61edfebdc429eb36afe8ac0f512b1","version_major":2,"version_minor":0}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"e78cdbeb72ba4ac2a7d8ddc90e504085","version_major":2,"version_minor":0}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"53c4fd9502654c479be23e9d7e0663e8","version_major":2,"version_minor":0}
+</script>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>INFO:cmdstanpy:CmdStan done processing.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Your sequence was TTHHTHTTHTTTHTTTHTTTHTTHTHHTHHTHTHHTTTHHTHTHTTHTHHTTHTHHTHTTTHHTTHHTTHHHTHHTHTTHTHTTHHTHHHTTHTHTTTHHTTHTHTHTHTHTTHTHTHHHTTHTHTHHTHHHTHTHTTHTTHHTHTHTHTTHHTTHTHTTHHHTHTHTHTTHTTHHTTHTHHTHHHTTHHTHTTHTHTHTHTHTHTHHHTHTHTHTHHTHHTHTHTTHTTTHHTHTTTHTHHTHHHHTTTHHTHTHTHTHHHTTHHTHTTTHTHHTHTHTHHTHTTHTTHTHHTHTHTTT
+Your flips have an expected correlation of -0.36 and your coin's bias is about 0.49</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-2-output-17.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="stack-layerswait-thats-a-deep-learning-thing" class="level2">
+<h2 class="anchored" data-anchor-id="stack-layerswait-thats-a-deep-learning-thing">Stack Layers…Wait, That’s a Deep Learning Thing</h2>
+<p>Now it’s time to write a hierarchical model, and for that we need to be a little more careful. I initially thought I could just put priors on the population level autocorrelation and bias, but I quickly ran into a problem there, which I will illustrate below.</p>
+<p>Suppose the coin’s bias is 0 (we always get tails). Could the autocorrelation be -1? No, it couldn’t be, because that would mean our next flip would have to be a 1, but the coin’s bias is 0! This illustrates some nuance to the problem I had failed to consider but luckily did not suffer from. The autocorrelation for two binary random variables, <span class="math inline">\(X, Y\)</span>, is defined as</p>
+<p><span class="math display">\[ \rho = \dfrac{\alpha - q}{q(1-q)} \]</span></p>
+<p>Where <span class="math inline">\(E(XY) = \alpha\)</span>. You see, <span class="math inline">\(\alpha\)</span> can only be so big depending on the value of <span class="math inline">\(q\)</span>, and if you place uniform priors on both <span class="math inline">\(\rho\)</span> and <span class="math inline">\(q\)</span> you can quickly get conditional probabilities outside the unit interval. That’s exactly what happened, and I was banging my head against the wall for a night trying to figure out the bounds on <span class="math inline">\(\rho\)</span> given <span class="math inline">\(q\)</span> and it quickly became a mess.</p>
+<p>There is another way. Rather than place priors on <span class="math inline">\(\rho\)</span> and <span class="math inline">\(q\)</span>, we could place priors on the multinomial parameter and then do algebra (two equations, two unknowns) to find out expressions for <span class="math inline">\(q\)</span> and <span class="math inline">\(\rho\)</span> in terms of <span class="math inline">\(p_{1\vert1}\)</span> and <span class="math inline">\(p_{1\vert0}\)</span>. This isn’t ideal, because I have very good prior information on what <span class="math inline">\(\rho\)</span> and <span class="math inline">\(q\)</span> should be, not on what <span class="math inline">\(\theta\)</span> should be. Whatever, let’s proceed and see how our priors look like with a prior predictive check.</p>
+<p>The model is actually simpler to write in Stan than the previous model. We will place a Dirichlet prior on the multinomial parameters (one for each person who responded with a sequence), and then each sequence is multinomial with that multinomial parameter.</p>
+<p><span class="math display">\[ \theta_j \sim \mbox{Dirichlet}(\alpha) \]</span></p>
+<p><span class="math display">\[ y_j \sim \mbox{Multinomial}(\theta_j)  \]</span></p>
+<p>The quantities we care about can be expressed in terms of <span class="math inline">\(\theta\)</span></p>
+<p><span class="math display">\[ \rho = p_{1\vert 1} - p_{1\vert 0}  \]</span></p>
+<p><span class="math display">\[ q = \dfrac{2p_{1\vert 0}}{1 - p_{1\vert 1} + p_{1\vert 0}}\]</span></p>
+<p>Here is the model in Stan</p>
+<pre><code>data{
+
+    int N; //How many sequences do we have
+    int y[N, 4]; // matrix of counts of co-occurences of (1,1), (1,0), (0, 1), (0,0)
+    int do_sample; // Flag to do a prior predictive check
+
+}
+parameters{
+    vector&lt;lower=0&gt;[4] a;
+    simplex[4] theta[N];
+}
+model{
+  
+  a ~ cauchy(0, 2.5);
+  
+  if(do_sample&gt;0){
+      for(i in 1:N){
+          theta[i] ~ dirichlet(a);
+          y[i] ~ multinomial(theta[i]);
+      }
+    }
+  
+}
+generated quantities{
+
+    vector[4] theta_ppc = dirichlet_rng(a);
+    real rho = theta_ppc[1] - theta_ppc[2];
+    real q = 2* theta_ppc[2]/(1 - theta_ppc[1] + theta_ppc[2]); 
+    
+    real yppc[N, 4];
+    
+    for(i in 1:N){
+        yppc[i] = multinomial_rng(theta[i], sum(y[i]));
+    }
+}</code></pre>
+<p>Shown below are the priors for the autocorrelation and bias based on the priors I’ve used. They are a little too uncertain for my liking. Humans are pretty smart, and I don’t expect for the population average bias to be very far from 0.5. I would prefer that the prior for <span class="math inline">\(q\)</span> be very tightly centered around 0.5, and that the prior for <span class="math inline">\(\rho\)</span> be tightly centered on 0, but that’s life. The model runs the 76 sequences in about 12 seconds (4 chains, 1000 warmups, 1000 samples) and diagnostics don’t indicate any pathological behavior. Let’s look at the joint posterior.</p>
+<div id="fig-distributions" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-prior" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="priors.png" class="img-fluid figure-img" data-ref-parent="fig-distributions"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">(a) Priors</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-hanno" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="posterior.png" class="img-fluid figure-img" data-ref-parent="fig-distributions"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">(b) Posteriors</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 1: Prior and Posterior distributions for the model.</figcaption><p></p>
+</figure>
+</div>
+<p>The take home here is that the sequences are largely consistent with an unbiased and uncorrelated coin. The expected correlation is negative (-0.05) meaning humans are more likely to switch from heads to tails, or tails to heads, and the expected bias is 0.53 meaning people seem to favor heads for some reason. The results are largely unsurprising, and I really wish I could place priors on <span class="math inline">\(\rho\)</span> and <span class="math inline">\(q\)</span> directly so that my model really does reflect the state of my knowledge, but this is good enough for now.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>I’ve been thinking about this problem for a while after I watched a talk by Gelman where he mentioned estimating the autocorrelation between bernoulli experiments in passing (he was talking about model criticism and offering examples of other things to check our model with). I’m moderately happy with the hierarchical model, and the results make a lot of sense. Humans are pretty smart, and we have an intuitive sense for what random looks like. I’m willing to bet that if people submitted longer sequences, we would have a more precise estimate of the bias/correlation.</p>
+<p>One thing I’ve shirked is really detailed model criticism, though I have an idea of how I would do that. In that answer on cross validated, COOLSerdash posts a REALLY COOL way to visualize the sequence data. They plot the number of runs (sequences of consecutive heads or tails) against the longest run in the sequence. I think this would make for an excellent way to check that our model has learned the correct autocorrelation for each individual who participated in the game (though I think the sequences were too short to have a precise estimate).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"00e56c958af641ef9de9000afb6513ea":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_f6b21303d7844840860066dd715815fb","placeholder":"​","style":"IPY_MODEL_6f567494711f4174a159d5c6dd8d400f","value":" 00:00 Sampling completed"}},"084ba035c6654ba0b30d0d1c29f645c9":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"08c3b56d68444b269f560748a4d14cb0":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_21eecd07c084423ba10edad1735e5ad0","max":22,"min":0,"orientation":"horizontal","style":"IPY_MODEL_22106a2a3310458d91fe4073563cb5e1","value":22}},"0dce4e99fb1d41de8092abf9ba40e983":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"153b41d701ba48da8f8e5119721edb66":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"15c8746115ec40bca0e1e0bc03fdd4c2":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":"blue","description_width":""}},"21eecd07c084423ba10edad1735e5ad0":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"22106a2a3310458d91fe4073563cb5e1":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":"blue","description_width":""}},"235a664758094a52ae47b344b72b55c5":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_6f3335fc86f34b168c2e67771a14f4b9","max":22,"min":0,"orientation":"horizontal","style":"IPY_MODEL_15c8746115ec40bca0e1e0bc03fdd4c2","value":22}},"2ac3a14399234b8595b597fe2ed6d93f":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_bf42c6d4590e4f8389cb6f613533e8c4","placeholder":"​","style":"IPY_MODEL_5f8e398cb9834f12995f865116f312d9","value":"chain 3 "}},"3a75ddd821724a7bae89bab3fc7a6089":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"53c4fd9502654c479be23e9d7e0663e8":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_ecd10c8eb8924c87adf82fcccecd18ff","IPY_MODEL_e937c8138c1c47f99b41146be938e656","IPY_MODEL_00e56c958af641ef9de9000afb6513ea"],"layout":"IPY_MODEL_69ac68cf35c64b44bf62411286f9b1d9"}},"59400b874ff5402f914e7fea31c79087":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"5f8e398cb9834f12995f865116f312d9":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"61d724d3b3934c8e87ceac2b0fadc925":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_ee73a83e27f84b1a90a03b6ce4ae6cda","placeholder":"​","style":"IPY_MODEL_8c4fb54908db42d0865872172325be92","value":"chain 2 "}},"69ac68cf35c64b44bf62411286f9b1d9":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"6f3335fc86f34b168c2e67771a14f4b9":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"6f567494711f4174a159d5c6dd8d400f":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"72488e0fa11c4d65bd4bdbddfc2cd931":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"72e8f35202564a0bb70d8354928872e3":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":"blue","description_width":""}},"733d3c3e206a4a74a7c0befa7ed2d455":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"77cd31d744164b7bb0f8448de349ca58":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"86d5bd0ad41d4077b3c970a3d730066e":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_59400b874ff5402f914e7fea31c79087","placeholder":"​","style":"IPY_MODEL_b87c5b5804e8460daf568085e9f3d83a","value":" 00:00 Sampling completed"}},"8b4197ff587543abbeaee330aeba92ed":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_c06fc8b074444f6fa102f334ba4e0fca","IPY_MODEL_235a664758094a52ae47b344b72b55c5","IPY_MODEL_e2588dda3f604c8b9d60002f9ac7f442"],"layout":"IPY_MODEL_0dce4e99fb1d41de8092abf9ba40e983"}},"8c4fb54908db42d0865872172325be92":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"8e3bd92ab6e742ec90eb4629142e7e25":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"928ed00ba9b643e7964b6b79037de28c":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"97d68ac291fe4b6b88d70f741e6e9ef5":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"97e61edfebdc429eb36afe8ac0f512b1":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_61d724d3b3934c8e87ceac2b0fadc925","IPY_MODEL_d99dfbe4a66a45239f3df069de70f1cc","IPY_MODEL_86d5bd0ad41d4077b3c970a3d730066e"],"layout":"IPY_MODEL_77cd31d744164b7bb0f8448de349ca58"}},"a8919ce9de04434aa57f4e6575a2b703":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"ab70e10f68a040d8a2acf8f88d558ce5":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"b87c5b5804e8460daf568085e9f3d83a":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"bf42c6d4590e4f8389cb6f613533e8c4":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"c06fc8b074444f6fa102f334ba4e0fca":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_928ed00ba9b643e7964b6b79037de28c","placeholder":"​","style":"IPY_MODEL_8e3bd92ab6e742ec90eb4629142e7e25","value":"chain 1 "}},"d99dfbe4a66a45239f3df069de70f1cc":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_97d68ac291fe4b6b88d70f741e6e9ef5","max":22,"min":0,"orientation":"horizontal","style":"IPY_MODEL_72e8f35202564a0bb70d8354928872e3","value":22}},"dafc8a8fb382432b804c000dcba7678d":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_153b41d701ba48da8f8e5119721edb66","placeholder":"​","style":"IPY_MODEL_ef8ed7b49d144d5e98f34bf8f8aa2d35","value":" 00:00 Sampling completed"}},"e2588dda3f604c8b9d60002f9ac7f442":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_084ba035c6654ba0b30d0d1c29f645c9","placeholder":"​","style":"IPY_MODEL_72488e0fa11c4d65bd4bdbddfc2cd931","value":" 00:00 Sampling completed"}},"e78cdbeb72ba4ac2a7d8ddc90e504085":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_2ac3a14399234b8595b597fe2ed6d93f","IPY_MODEL_08c3b56d68444b269f560748a4d14cb0","IPY_MODEL_dafc8a8fb382432b804c000dcba7678d"],"layout":"IPY_MODEL_ab70e10f68a040d8a2acf8f88d558ce5"}},"e937c8138c1c47f99b41146be938e656":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_733d3c3e206a4a74a7c0befa7ed2d455","max":22,"min":0,"orientation":"horizontal","style":"IPY_MODEL_fc75e9f33f36443686c51728d893e0c4","value":22}},"ecd10c8eb8924c87adf82fcccecd18ff":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_a8919ce9de04434aa57f4e6575a2b703","placeholder":"​","style":"IPY_MODEL_3a75ddd821724a7bae89bab3fc7a6089","value":"chain 4 "}},"ee73a83e27f84b1a90a03b6ce4ae6cda":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"ef8ed7b49d144d5e98f34bf8f8aa2d35":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"f6b21303d7844840860066dd715815fb":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"fc75e9f33f36443686c51728d893e0c4":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":"blue","description_width":""}}},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
