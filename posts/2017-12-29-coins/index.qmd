@@ -42,7 +42,10 @@ Shown below is the solution.  In dark blue are the coins face down (I've arrange
 
 
 ```{python}
-
+#| label: fig-grid
+#| echo: false
+#| fig-cap: "Coins after flipping.  Dark squares are face down coins."
+#| fig-dpi: 240
 fig, ax = plt.subplots(dpi=240, figsize = (4, 4))
 
 coin_grid = coins.reshape(10, 10)
