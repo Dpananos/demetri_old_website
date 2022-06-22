@@ -1,0 +1,78 @@
+---
+title: "Log Link vs. Log(y)"
+author: "Demetri Pananos"
+date: "2020-10-06"
+categories: [R, Statistics]
+---
+
+
+You wanna see a little gotcha in statistics?  Take the following data
+
+```{r}
+set.seed(0)
+N = 1000
+y = rlnorm(N, 0.5, 0.5)
+```
+
+and explain why `glm(y ~ 1, family = gaussian(link=log)` and  `lm(log(y)~1)` produce different estimates of the coefficients.  In case you don't have an R terminal, here are the outputs
+
+```{r}
+log_lm = lm(log(y) ~ 1)
+summary(log_lm)
+```
+
+```{r}
+
+glm_mod = glm(y ~ 1 , family = gaussian(link=log))
+summary(glm_mod)
+
+```
+
+Answer is the same as the difference between $E(g(X))$ and $g(E(X))$ which are not always the same.  Let me explain. 
+
+First, let's start with the lognormal random variable.  $y \sim \operatorname{Lognormal}(\mu, \sigma)$ means $\log(y) \sim \operatorname{Normal}(\mu, \sigma)$.  So $\mu, \sigma$ are the parameters of the underlying normal distribution.  When we do `lm(log(y) ~ 1)`, we are modelling $E(\log(y)) = \beta_0$.  So $\beta_0$ is an estimate of $\mu$ and $\exp(\mu)$ is an estimate of the median of the lognormal.  That is an easy check
+
+```{r}
+median(y)
+```
+
+```{r}
+#Meh, close enough
+exp(coef(log_lm))
+```
+If I wanted an estimate of the mean of the lognormal, I would need to add $\sigma^2/2$ to my estimate of $\mu$.
+
+```{r}
+mean(y)
+```
+
+```{r}
+#Meh, close enough
+sigma = var(log_lm$residuals)
+exp(coef(log_lm) + sigma/2)
+```
+
+Ok, onto the glm now.  When we use the glm, we model $\log(E(y)) = \beta_0$, so we model the mean of the lognormal directly.  Case in point
+
+
+```{r}
+mean(y)
+```
+
+```{r}
+exp(coef(glm_mod))
+```
+
+
+and if I wanted the median, I would need to consider the extra factor of $\exp(\sigma^2/2)$
+
+```{r}
+median(y)
+```
+
+
+```{r}
+exp(coef(glm_mod) - sigma/2)
+```
+
+Log link vs. log outcome can be tricky.  Just be sure to know what you're modelling when you use either.

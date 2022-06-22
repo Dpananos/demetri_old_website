@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Demetri Pananos">
-<meta name="dcterms.date" content="2018-08-31">
+<meta name="dcterms.date" content="2020-10-06">
 
-<title>PhDemetri - Neat Litle Combinatorics Problem</title>
+<title>PhDemetri - Log Link vs.&nbsp;Log(y)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,10 +166,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Neat Litle Combinatorics Problem</h1>
+      <h1 class="title">Log Link vs.&nbsp;Log(y)</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Python</div>
-                <div class="quarto-category">Probability</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Statistics</div>
               </div>
                   </div>
   </div>
@@ -187,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 31, 2018</p>
+        <p class="date">October 6, 2020</p>
       </div>
     </div>
       
@@ -204,68 +204,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>I’ll cut right to it. Consider the set <span class="math inline">\(S = (49, 8, 48, 15, 47, 4, 16, 23, 43, 44, 42, 45, 46 )\)</span>. What is the expected value for the minimum of 6 samples from this set?</p>
-<p>We could always just sample form the set to estimate the expected value. Here is a python script to do just that.</p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">49</span>, <span class="dv">8</span>, <span class="dv">48</span>, <span class="dv">15</span>, <span class="dv">47</span>, <span class="dv">4</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">43</span>, <span class="dv">44</span>, <span class="dv">42</span>, <span class="dv">45</span>, <span class="dv">46</span>])</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mins <span class="op">=</span> []</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    mins.append(np.random.choice(x,size <span class="op">=</span> <span class="dv">6</span>, replace <span class="op">=</span> <span class="va">False</span>).<span class="bu">min</span>())</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(mins))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You wanna see a little gotcha in statistics? Take the following data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rlnorm</span>(N, <span class="fl">0.5</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and explain why <code>glm(y ~ 1, family = gaussian(link=log)</code> and <code>lm(log(y)~1)</code> produce different estimates of the coefficients. In case you don’t have an R terminal, here are the outputs</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>log_lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y) <span class="sc">~</span> <span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>9.098</code></pre>
+<pre><code>
+Call:
+lm(formula = log(y) ~ 1)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.61028 -0.34631 -0.02152  0.35173  1.64112 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  0.49209    0.01578   31.18   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.499 on 999 degrees of freedom</code></pre>
 </div>
 </div>
-<p>But that is estimating the mean. We can do better and directly compute it. Here is some python code to create all subsets from <span class="math inline">\(S\)</span> of size 6. Then, we simply take out the minimum from each subset and compute the mean.</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations, groupby</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">49</span>, <span class="dv">8</span>, <span class="dv">48</span>, <span class="dv">15</span>, <span class="dv">47</span>, <span class="dv">4</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">43</span>, <span class="dv">44</span>, <span class="dv">42</span>, <span class="dv">45</span>, <span class="dv">46</span>])</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.sort(x)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">list</span>(combinations(x,<span class="dv">6</span>))</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>mins <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x[<span class="dv">0</span>], c))</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, g <span class="kw">in</span> groupby(<span class="bu">sorted</span>(mins)):</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span>k<span class="op">*</span>(<span class="bu">len</span>(<span class="bu">list</span>(g))<span class="op">/</span><span class="bu">len</span>(mins))</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( s )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>glm_mod <span class="ot">=</span> <span class="fu">glm</span>(y <span class="sc">~</span> <span class="dv">1</span> , <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link=</span>log))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(glm_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>8.818181818181818</code></pre>
+<pre><code>
+Call:
+glm(formula = y ~ 1, family = gaussian(link = log))
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.5282  -0.6981  -0.2541   0.4702   6.5869  
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  0.61791    0.01698    36.4   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for gaussian family taken to be 0.9918425)
+
+    Null deviance: 990.85  on 999  degrees of freedom
+Residual deviance: 990.85  on 999  degrees of freedom
+AIC: 2832.7
+
+Number of Fisher Scoring iterations: 5</code></pre>
 </div>
 </div>
-<p>The script returns 8.18 repeating. Great, but we can do even better! If we can compute the probability density function, we can compute the mean analytically. Let’s consider a smaller problem to outline the solution.</p>
-<p>Let our set in question be <span class="math inline">\((1,2,3,4,5)\)</span>. Let the minimum of a sample of 3 numbers from this set be the random variable <span class="math inline">\(z\)</span>. Now, note there are <span class="math inline">\(\binom{5}{3} = 10\)</span> ways to choose 3 elements from a set of 5.</p>
-<p>How many subsets exist where the minimum is 1? Well, if I sampled 1, then I would still have to pick 2 numbers from a possible 4 numbers larger than 1. There are <span class="math inline">\(\binom{4}{2}\)</span> ways to do this. So <span class="math inline">\(p(z=1) = \binom{4}{2} / \binom{5}{3}\)</span>.</p>
-<p>In a similar fashion, there are <span class="math inline">\(\binom{3}{2}\)</span> subsets where 2 is the minimum, and <span class="math inline">\(\binom{2}{2}\)</span> subsets where 3 is the minimum. There are no subsets where 4 or 5 are the minimum (why?). So that means the expected minimum value for this set would be</p>
-<p><span class="math display">\[\operatorname{E}(z) = \dfrac{ \sum_{k = 1}^{3} k\binom{5-k}{2} }{\binom{5}{3}}  \]</span></p>
-<p>Whatever that sum happens to be. Here is how you could code up the analytic solution to our problem.</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> binom</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([ <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>, <span class="dv">43</span>, <span class="dv">44</span>, <span class="dv">45</span>, <span class="dv">46</span>, <span class="dv">47</span>, <span class="dv">48</span>, <span class="dv">49</span>])</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.sort(x)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span><span class="dv">6</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>sample_space <span class="op">=</span> x[:<span class="op">-</span>(sample_size<span class="op">-</span><span class="dv">1</span>)]</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,s <span class="kw">in</span> <span class="bu">enumerate</span>(sample_space,start <span class="op">=</span> <span class="dv">1</span>):</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    E<span class="op">+=</span> s<span class="op">*</span>binom(x.size<span class="op">-</span>i,sample_size<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E<span class="op">/</span>binom(x.size, sample_size))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Answer is the same as the difference between <span class="math inline">\(E(g(X))\)</span> and <span class="math inline">\(g(E(X))\)</span> which are not always the same. Let me explain.</p>
+<p>First, let’s start with the lognormal random variable. <span class="math inline">\(y \sim \operatorname{Lognormal}(\mu, \sigma)\)</span> means <span class="math inline">\(\log(y) \sim \operatorname{Normal}(\mu, \sigma)\)</span>. So <span class="math inline">\(\mu, \sigma\)</span> are the parameters of the underlying normal distribution. When we do <code>lm(log(y) ~ 1)</code>, we are modelling <span class="math inline">\(E(\log(y)) = \beta_0\)</span>. So <span class="math inline">\(\beta_0\)</span> is an estimate of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\exp(\mu)\)</span> is an estimate of the median of the lognormal. That is an easy check</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>8.818181818181818</code></pre>
+<pre><code>[1] 1.600898</code></pre>
 </div>
 </div>
-<p>Full disclosure, this was on a job application (literally, on the job application), so sorry KiK for putting the answer out there, but the question was too fun not to write up!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Meh, close enough</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(log_lm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept) 
+   1.635723 </code></pre>
+</div>
+</div>
+<p>If I wanted an estimate of the mean of the lognormal, I would need to add <span class="math inline">\(\sigma^2/2\)</span> to my estimate of <span class="math inline">\(\mu\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.855038</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Meh, close enough</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="fu">var</span>(log_lm<span class="sc">$</span>residuals)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(log_lm) <span class="sc">+</span> sigma<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept) 
+   1.852594 </code></pre>
+</div>
+</div>
+<p>Ok, onto the glm now. When we use the glm, we model <span class="math inline">\(\log(E(y)) = \beta_0\)</span>, so we model the mean of the lognormal directly. Case in point</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.855038</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(glm_mod))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept) 
+   1.855038 </code></pre>
+</div>
+</div>
+<p>and if I wanted the median, I would need to consider the extra factor of <span class="math inline">\(\exp(\sigma^2/2)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.600898</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(glm_mod) <span class="sc">-</span> sigma<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept) 
+   1.637881 </code></pre>
+</div>
+</div>
+<p>Log link vs.&nbsp;log outcome can be tricky. Just be sure to know what you’re modelling when you use either.</p>
 
 
 
