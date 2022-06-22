@@ -2,6 +2,7 @@
 title: "Coins and Factors"
 author: "Demetri Pananos"
 date: "2017-12-29"
+image: coins.png
 categories: [Python, Riddler]
 ---
 
@@ -81,8 +82,10 @@ for i, (n, (y, x)) in enumerate(zip(num, pos)):
         color='k' if coins[i] else 'white'
     )
 
-
+plt.tight_layout()
+plt.savefig('coins.png')
 ```
+
 
 
 ## Reasoning Out the Solution.
